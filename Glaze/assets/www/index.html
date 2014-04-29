@@ -1,0 +1,292 @@
+<!DOCTYPE html> 
+<html> 
+	<head> 
+	<title>My Page</title> 
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<link rel="stylesheet" href="css/jquery.mobile-1.0.css" />
+	<link rel="stylesheet" href="css/paintStyle.css" />
+
+	<script src="js/jquery/jquery-1.7.1.min.js"></script>
+	<script src="js/jquery/jquery.mobile-1.0.js"></script>
+	
+	<script src="js/lib/paint.js"></script>
+	<script src="js/lib/brushes.js"></script>
+	<script src="js/lib/shapes.js"></script>
+</head> 
+<body> 
+<div data-role="page" id="splashPage" style=" background-color:#8abbd7;">
+	<div data-role="header">
+		Welcome, to Glaze Demo
+	</div><!-- /header -->
+	<div  data-role="content" style="padding:0px;">	
+    </div>
+
+<div data-role="content">
+	<div data-role="fieldcontain">
+	<img src="images/glaze96.png" name="glazeImage" style="margin:0 auto;"><br><br>
+ 	<label for="glazeImage">v1.0</label><br><br>
+    <label for="glazeImage" style="margin:0 auto;">Glaze Demo - by FableForce</label>
+    <br><br><br>
+    <a href="#mainPage" data-role="button" data-icon="arrow-r" data-iconpos="right">Continue</a>
+ 
+   </div>	
+	
+	</div> 
+
+
+</div>
+
+
+
+
+<div data-role="page" id="mainPage">
+
+	<div data-role="header">
+		
+	</div><!-- /header -->
+
+	<div  data-role="content" style="padding:0px;">	
+	<!--<div id="canContainer" style="float:left;height:100%; min-height:100px; width:100%; min-width:100px;"> -->
+		<canvas id="canvas" class="canvas" width="100" height="100"></canvas>
+		<canvas id="ghostCanvas" class="canvas" width="100" height="100" style="z-index:999;"></canvas>
+	<!--</div>	-->
+	</div><!-- /content -->
+
+	<style>	
+		.navIndex .ui-btn .ui-btn-inner { padding-top: 40px !important; }
+		.navIndex .ui-btn .ui-icon { width: 30px!important; height: 30px!important; margin-left: -15px !important; box-shadow: none!important; -moz-box-shadow: none!important; -webkit-box-shadow: none!important; -webkit-border-radius: 0 !important; border-radius: 0 !important; }
+		.rollerIcon .ui-icon { background:  url(images/paint-roller.png) 50% 50% no-repeat; background-size: 24px 22px; }
+		.sliderIcon .ui-icon { background:  url(images/sliders.png) 50% 50% no-repeat; background-size: 24px 22px;  }
+		.palletIcon .ui-icon { background:  url(images/palette.png) 50% 50% no-repeat;  background-size: 24px 22px; }
+		.settingIcon .ui-icon { background:  url(images/gear.png) 50% 50% no-repeat;  background-size: 22px 27px; }
+		.eraserIcon .ui-icon { background:  url(images/eraser.png) 50% 50% no-repeat;  background-size: 20px 24px; }
+		
+	</style>
+
+<div data-role="footer" style="padding:0px;" class="ui-bar" data-position="fixed" id="footrBAR">
+<div data-role="navbar"  class="navIndex">
+			<ul>
+	<li>
+	<a  class="rollerIcon" href="#brushPage" 
+	data-icon="custom" >Brushes</a></li>
+	<li>
+	<a class="palletIcon" href="#colorPage"   data-role="button"  data-rel="dialog"
+	data-icon="custom" >Pallet</a></li>
+	<li><a id="20" class="toolBtn eraserIcon" href="#" data-role="button" data-icon="custom" >Eraser</a></li>
+	<li><a  class="sliderIcon"  href="#optionPage"  data-rel="dialog"
+	data-role="button" 
+	data-icon="custom" >Options</a></li>
+	<li><a class="settingIcon" href="#settingPage"  data-role="button" data-icon="custom">Settings</a></li>
+			</ul>
+</div>	
+</div>
+
+
+</div><!-- /page -->
+
+
+<script>
+$(function(){
+
+ //alert(11);
+	  
+	 
+});
+
+	
+</script>
+
+
+
+<!-- Brushes List start -->
+
+<div id="brushPage" data-role="page"> 
+	
+	<div data-role="header" > 
+<a href="#mainPage" >Back</a>
+	<h1>Brushes</h1></div>
+
+	<div data-role="content">
+	<div class="content-primary">	
+	<ul data-role="listview" >
+	<li><a class="toolBtn" href="#" id="1">Circle</a></li>
+	<li><a class="toolBtn" href="#" id="2">Square</a></li>
+	<li><a class="toolBtn" href="#" id="3">Line</a></li>
+
+	<li><a class="toolBtn" href="#" id="5">Circle - Filled</a></li>
+	<li><a class="toolBtn" href="#" id="6">Square - Filled</a></li>
+
+	<li><a class="toolBtn" href="#" id="21">Shaded Brush</a></li>
+	<li><a class="toolBtn" href="#" id="22">Fur Brush</a></li>
+	<li><a class="toolBtn toolBtnActive" href="#" id="23">Pencil</a></li>
+	<li><a class="toolBtn" href="#" id="24">Ball Point Pen</a></li>
+	</ul>
+	</div>
+	</div> 
+
+	<div data-role="footer" ></div>
+	
+</div> 
+
+
+<!-- Brushes List start -->
+
+<div id="colorPage" data-role="page"> 
+	
+	<div data-role="header" style="display:none;" >
+	<a href="#mainPage" >Back</a>
+	 <h1>Color</h1>
+	
+	</div>
+	<div data-role="content" >
+			
+			<div class="content-primary" data-overlay-theme="a">	
+				<br>
+				<br>
+				<br>
+				<h4>Touch & Move to Select Color</h4>
+				<input type="text" name="colNow" id="colNow" disabled="disabled" style="margin: 0 auto;
+				background-color:#1CB8ED;"></input>
+				<br><br>
+				<div style=" width:100%;padding-left:3em;float: left; margin:0 auto;height: 200px;">
+				<canvas id="colorCanvas" width="200" height="200" style="margin: 0 auto;"></canvas>
+				</div>
+				<br><br>&nbsp;
+				
+				<a href="#" onclick="$.mobile.changePage($('#mainPage'));" data-role="button">Done</a>
+			</div>
+	</div> 
+
+	<div data-role="footer" >
+
+	</div>
+	
+</div> 
+
+
+<!-- Brushes Options -->
+
+<div id="optionPage" data-role="page"> 
+	
+	<div data-role="header" style="display:none;">
+		<a href="#mainPage" >Back</a>
+	 <h1>Options</h1></div>
+
+	<div data-role="content" >
+				<br>
+				<br>
+				<br>
+			<div class="content-primary">	
+				 <label for="slider-0">Brush Opacity:</label>
+				<input type="text" id="opacityBox" name="slider-0" style="width:25%;" disabled="disabled" value="10" >
+				</input>
+  				<input data-role="none"  type="range" id="slider-0" value="10" min="1"
+  				max="10"  />
+  				<br><br>
+  				<label for="slider-1">Brush Thickness:</label>
+				<input type="text" id="thicknessBox" name="slider-1" value="1" style="width:25%;" disabled="disabled" >
+				</input>
+  				<input data-role="none"  type="range" id="slider-1" value="1" min="1"
+  				max="10"  />
+				<br><br>
+  				<a href="#" onclick="$.mobile.changePage($('#mainPage'));" data-role="button">Done</a>
+			</div>
+	</div> 
+
+	<div data-role="footer" ></div>
+	
+</div> 
+
+<div id="settingPage" data-role="page"> 
+	
+	<div data-role="header" >
+	<a href="#mainPage" >Back</a>
+	 <h1>Settings</h1></div>
+
+	<div data-role="content">
+	<div class="content-primary">	
+	<ul data-role="listview" >
+	<li><a  href="#" onclick="newCanvas()" >New</a></li>
+	<li><a  href="#imageName"    >Save File</a></li>	
+	<li><a  href="#about"  >About</a></li>	
+	</ul>
+	</div>
+	</div> 
+
+	<div data-role="footer" ></div>
+	
+</div> 
+
+
+<div id="imageName" data-role="page"> 
+	
+	<div data-role="header" ><a href="#mainPage" >Back</a> <h1>Save As</h1></div>
+
+	<div data-role="content">
+	<div data-role="fieldcontain">
+    <label for="filenamestr">SD Card/Glaze/Art/</label>
+    <input type="text" name="filenamestr" id="fileNameStr" value=""  /> 
+    </div>
+    <div data-role="fieldcontain">
+	 <label for="fileFormat">Format</label> 
+	 <select name="fileFormat" id="fileFormat"> 
+	 <option value="png">PNG</option>
+      <option value="jpeg">JPEG</option>
+   </select>
+   </div>	
+
+
+   </div>	
+	<a  href="#" onclick="saveImage()" data-role="button" >Save</a>
+	</div> 
+
+	<div data-role="footer" ></div>
+	
+</div> 
+
+
+
+<div id="savedImage" data-role="page"> 
+	
+	<div data-role="header" > <h1>Image Saved</h1></div>
+
+	<div data-role="content">
+	<div data-role="fieldcontain">
+    <label for="savedFileName">File Saved To</label>
+    
+	 <input type="text" name="savedFileName" id="savedFileName" value=""  />
+	 
+      
+  
+   </div>	
+	<a  href="#" onclick="saveImage()" data-role="button" >Save</a>
+	</div> 
+
+	<div data-role="footer" ></div>
+	
+</div> 
+
+<div id="about" data-role="page"> 
+	
+	<div data-role="header" > 
+		<a href="#mainPage" >Back</a>
+	<h1>About Glaze Demo</h1></div>
+
+	<div data-role="content">
+	<div data-role="fieldcontain">
+	<img src="images/glaze96.png" name="glazeImage" style="margin:0 auto;"><br><br>
+ 	<label for="glazeImage">v1.0</label><br><br>
+    <label for="glazeImage" style="margin:0 auto;">Developed by FableForce</label>
+    
+ 
+   </div>	
+	
+	</div> 
+
+	<div data-role="footer" ></div>
+	
+</div> 
+
+
+</body>
+</html>
