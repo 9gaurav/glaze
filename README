@@ -1,1 +1,19 @@
-Hello There!
+Glaze:
+What started as a weekend project idea on one lazy September weekend , resulted in Glaze: a simple doodling app that runs on all the platforms!
+It is light weight, uses HTML5 and is compatible with:
+- Mac
+- Windows
+- Android
+- iOS 
+
+
+I wished to convert this into a native Android app. But never found time to do so.
+I hope someone will do that. :)
+
+Enjoy doodling!
+
+Few known bugs:
+-Saving doodle might not work on some devices
+-Color picker lag 
+-Other known bugs and issues
+
